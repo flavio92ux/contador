@@ -11,11 +11,14 @@ app.get('/', async (_req, res) => {
     res.status(200).json(result);
 });
 
-app.post('/', async (req, res) => {
-    const { num } = req.body;
-    await increment(num);
+app.post('/', async (_req, res) => {
+    const result = await getAll();
 
-    res.status(200).json('ok');
+    await increment(result[0].number + 1);
+
+    const updatedNumber = await getAll();
+
+    res.status(200).json({ updatedNumber });
 });
 
 const PORT = process.env.PORT || 3001;
