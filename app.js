@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const increment = require('./increment');
 const getAll = require('./getAll');
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', async (_req, res) => {
     const result = await getAll();
