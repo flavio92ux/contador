@@ -20,7 +20,7 @@ app.post('/', async (_req, res) => {
 
     const updatedNumber = await getAll();
 
-    res.status(200).json({ updatedNumber });
+    res.status(200).json(updatedNumber);
 });
 
 const PORT = process.env.PORT || 3001;
